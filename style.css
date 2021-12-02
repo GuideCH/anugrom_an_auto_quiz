@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: top;
+    background-color:black;
+    font-size: 2rem;
+    color: white;
+}
+
+.title_head{
+  color: rgb(15, 204, 255);
+  align-self: auto;
+}
