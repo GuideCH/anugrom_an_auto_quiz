@@ -8,6 +8,7 @@ var an;
 var a1;
 var n;
 var d;
+var r;
 var q_answer;
 
 function test(){
@@ -19,7 +20,8 @@ function question_handler(){
   var random = Math.round(Math.random()*10);
   var to_return;
   //random question limit
-  while(random > 2) {
+  //|| random< 3
+  while(random > 4) {
     random = Math.round(Math.random()*10);
   }
 
@@ -30,10 +32,10 @@ function question_handler(){
     to_return = (test())
 
   } else if(random == 4 ){
-    to_return = (test())
+    to_return = (get_question_two_sum_plus_an())
 
   } else if(random == 3){
-    to_return = (test())
+    to_return = (get_question_two_an())
 
   } else if(random == 2){
     to_return = (get_question_one_sum_plus_an())
@@ -98,12 +100,44 @@ function get_question_one_sum_plus_an(){
   return [question,a1,n,d,q_answer]
 };
 
+function get_question_two_an(){
+  let a1_scale = 5
+  let n_scale = 5
+  let r_scale = 2.5
+  let question
 
+
+  a1 = (Math.round(Math.random() * a1_scale) + (1))
+  n = (Math.round(Math.random() * n_scale) + (5))
+  r = (Math.round(Math.random() * r_scale) + (2))
+  q_answer = (a1*(Math.pow(r,(n-1))))
+  question = String(`ลำดับที่ ${n.toString()} ของอนุกรมเลขเรขาคณิต ที่มี a1 =  ${a1.toString()} และ r = ${r.toString()}`)
+  return [question,a1,n,r,q_answer]
+};
+
+function get_question_two_sum_plus_an(){
+  let a1_scale = 5
+  let n_scale = 3
+  let r_scale = 2.5
+  let question
+
+
+  a1 = (Math.round(Math.random() * a1_scale) + (1))
+  n = (Math.round(Math.random() * n_scale) + (5))
+  r = (Math.round(Math.random() * r_scale) + (2))
+
+  q_answer = ((a1 * (Math.pow(r,(n-1))) ) / r-1 )
+
+  question = String(`ผลรวม ${n.toString()} พจน์แรก ของอนุกรมเลขเรขาคณิต ที่มี a1 =  ${a1.toString()} และ r = ${r.toString()}`)
+
+  return [question,a1,n,r,q_answer]
+};
 
 
 function loadQuestion_to_html(){
   question_bar.innerHTML = String(question_handler()[0])
 };
+
 
 
 window.addEventListener('load', loadQuestion_to_html);
